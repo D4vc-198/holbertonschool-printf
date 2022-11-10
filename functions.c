@@ -27,6 +27,8 @@ int convert_base(int base, int number, int band)
 	{
 		*ptr-- = buffer[number % base];
 		number = number / base;
+		if (number == 0)
+			break;
 	}
 	if (save < 0)
 		*ptr-- = '-';
