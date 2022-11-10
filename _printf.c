@@ -16,8 +16,8 @@ int _printf(const char *format, ...)
 	int count = 0;
 	const char *savec;
 
-	if (restriction_percentage(format) == -1 || !format)
-		return (-1);
+	if (format == NULL || restriction_percentage(format) == -1)
+		exit(1);
 
 	va_start(ptr, format);
 	while (*(format + pos) != '\0')
@@ -26,8 +26,6 @@ int _printf(const char *format, ...)
 		if (*savec == '%' && *(save + 1) != '%')
 		{
 			len = match_case(savec + 1)(ptr);
-			if (len == -1)
-				return (-1);
 
 			tmp += len;
 
@@ -42,6 +40,8 @@ int _printf(const char *format, ...)
 		count++;
 		pos++;
 	}
+	if (count == 0 && len == 0)
+		exit(1);
 	va_end(ptr);
 	return (count + tmp);
 }
@@ -74,5 +74,3 @@ int restriction_percentage(const char *str)
 	}
 	return (0);
 }
-
-
