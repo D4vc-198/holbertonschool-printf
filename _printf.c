@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 	{
 		if (*(format + pos) == '%' && *(format + pos + 1) == '%')
 		{
-			count += _putchar(*(format + pos));
+			count += write(1, format + pos, 1);
 			pos++;
 			continue;
 		}
@@ -34,7 +34,7 @@ int _printf(const char *format, ...)
 				continue;
 			}
 		}
-		count += _putchar(*(format + pos));
+		count += write(1, format + pos, 1);
 	}
 	va_end(ptr);
 	return (count);
