@@ -29,10 +29,10 @@ int _printf(const char *format, ...)
 		{
 			len = match_case(savec + 1)(ptr);
 
-			tmp += len - 2;
+			tmp += len;
 
 			pos = pos + 2;
-			savec = (format + pos);
+			savec = (format + pos - 2);
 		}
 		if (*(savec) == '%' && *(savec + 1) == '%')
 			pos++, savec = (format + pos);
@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
 		count++;
 		pos++;
 	}
-	if (count == 0 && len == 0)
+	if (count == 0 && len == 0)i
 		exit(1);
 	va_end(ptr);
 	return (count + tmp);
