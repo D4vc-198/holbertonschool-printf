@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 		{
 			len = match_case(savec + 1)(ptr);
 
-			tmp += len;
+			tmp += len - 2;
 
 			pos = pos + 2;
 			savec = (format + pos);
