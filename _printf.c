@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-	for (pos = 0;*(format + pos) != '\0'; pos++)
+	for (pos = 0; *(format + pos) != '\0'; pos++)
 	{
 		if (*(format + pos) == '%' && *(format + pos + 1) == '%')
 		{
@@ -36,6 +36,7 @@ int _printf(const char *format, ...)
 		}
 		count += write(1, format + pos, 1);
 	}
+
 	va_end(ptr);
 	return (count);
 }
