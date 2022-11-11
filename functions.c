@@ -14,9 +14,9 @@ int convert_base(int base, int number, int band)
 	char *ptr;
 	char buffersito[20];
 	char *ptr = &buffersito[20];
-	long int save = number;
+	long int save = number, len_end = 0;
 
-	if (band == 0)
+	if (band == 0 || band == 2)
 		_strcpy(buffer, "0123456789ABCDEF");
 	else
 		_strcpy(buffer, "0123456789abcdef");
@@ -43,7 +43,13 @@ int convert_base(int base, int number, int band)
 		*ptr-- = 'x', *ptr-- = '0';
 	ptr++;
 
-	return (write(1, ptr, _strlen(ptr)));
+	if (_strlen(ptr) < 2 && band == 2)
+	{
+		_putchar('0');
+		len_end++;
+	}
+	len_end += _strlen(ptr);
+	return (write(1, ptr, len_end));
 }
 
 /**
