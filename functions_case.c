@@ -20,9 +20,9 @@ int char_case(va_list ptr)
  */
 int string_case(va_list ptr)
 {
-	char *save;
-
-	save = va_arg(ptr, char *);
-
+	char *save = va_arg(ptr, char *);
+	
+	if (save == NULL)
+		save = "(null)";
 	return (write(1, save, _strlen(save)));
 }
