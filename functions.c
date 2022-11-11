@@ -11,9 +11,9 @@
 int convert_base(int base, int number, int band)
 {
 	char buffer[17];
+	char *ptr;
 	char buffersito[20];
 	char *ptr = &buffersito[20];
-	char *ptr;
 	long int save = number;
 
 	if (band == 0)
@@ -28,10 +28,9 @@ int convert_base(int base, int number, int band)
 		_putchar(48);
 		return (1);
 	}
-
+	/*Convert*/
 	if (number < 0)
 		number = -number;
-
 	while (number > 0)
 	{
 		*ptr-- = buffer[number % base];
