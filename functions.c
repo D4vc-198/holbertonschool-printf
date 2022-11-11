@@ -52,7 +52,7 @@ int convert_base(int base, int number, int band)
  *
  * Return: none - void function
  */
-int print_number(int n)
+int print_number(long int n)
 {
 	unsigned int r;
 	int _length = 0;
