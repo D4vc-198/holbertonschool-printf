@@ -1,4 +1,4 @@
-#include "main.h"
+o#include "main.h"
 /**
  * convert_base - convert base and add argument
  * @base: number of base to convert
@@ -20,15 +20,14 @@ int convert_base(int base, int number, int band, char **add)
 		_strcpy(buffer, "0123456789ABCDEF");
 	else
 		_strcpy(buffer, "0123456789abcdef");
-	*ptr = '\0';
-	ptr--;
+	*ptr = '\0', ptr--;
 
 	if (number == 0)
 	{
 		**add = 48, (*add)++;
 		return (1);
 	}
-	/*Convert*/
+
 	if (number < 0)
 		number = -number;
 	while (number > 0)
@@ -44,11 +43,15 @@ int convert_base(int base, int number, int band, char **add)
 	ptr++;
 
 	if (_strlen(ptr) < 2 && band == 2)
-	{
-		**add = 0, (*add)++, len_end++;
-		/*_putchar('0');*/
-	}
+		**add = 0, (*add)++, len_end++; /*_putchar('0');*/
 	len_end += _strlen(ptr);
+	while (len_end > 0)
+	{
+		**add = *ptr;
+		ptr++;
+		(*add)++;
+		len_end--;
+	}
 	return (0);
 }
 
