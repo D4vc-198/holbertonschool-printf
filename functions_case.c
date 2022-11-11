@@ -34,7 +34,7 @@ int string_case(va_list ptr)
  */
 int digit_case_u(va_list ptr)
 {
-	long int save = va_arg(ptr, long int);
+	unsigned int save = va_arg(ptr, unsigned int);
 
-	return (convert_base(10, save, 0));
+	return (print_number(save));
 }
