@@ -33,6 +33,7 @@ int digit_base_10(va_list);
 int restriction_percentage(const char *str);
 int (*match_case(const char *))(va_list);
 int convert_base(int base, int number, int band);
+/*Task to print number*/
 int print_number(int n);
 
 #endif
