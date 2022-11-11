@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * convert_base - convert base and add argument
  * @base: number of base to convert
@@ -46,11 +45,11 @@ int convert_base(int base, int number, int band, char **add)
 
 	if (_strlen(ptr) < 2 && band == 2)
 	{
-		**add = 0, (*add)++;
-		len_end++; /*_putchar('0');*/
+		**add = 0, (*add)++, len_end++;
+		/*_putchar('0');*/
 	}
 	len_end += _strlen(ptr);
-	return (write(1, ptr, len_end));
+	return (0);
 }
 
 /**
