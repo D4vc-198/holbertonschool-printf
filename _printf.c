@@ -9,6 +9,9 @@ int _printf(const char *format, ...)
 {
 	int pos, count = 0;
 	va_list ptr;
+	char buff[2000];
+	char *add = &buff[0];
+
 	va_start(ptr, format);
 	
 	if ((format == NULL) || (*(format) == '%' && *(format + 1) == '\0'))
@@ -20,7 +23,8 @@ int _printf(const char *format, ...)
 	{
 		if (*(format + pos) == '%' && *(format + pos + 1) == '%')
 		{
-			count += write(1, format + pos, 1);
+			*add = *(format + pos);
+			add++:
 			pos++;
 			continue;
 			
@@ -32,13 +36,14 @@ int _printf(const char *format, ...)
 			{
 				if (match_case(format + pos + 1) != NULL)
 				{
-					count += match_case(format + pos + 1)(ptr);
+					count += match_case(format + pos + 1)(ptr, &add);
 					pos++;
 					continue;
 				}
 			}
-			count += write(1, format + pos, 1);
+			*add = *(format + pos);
+			add++;
 		}
 		va_end(ptr);
-		return (count);
+		return (_putchar(buff, add - (char *)buff));
 }
