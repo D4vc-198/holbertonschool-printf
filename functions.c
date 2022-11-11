@@ -22,22 +22,26 @@ int convert_base(int base, int number, int band)
 	*ptr = '\0';
 	ptr--;
 
+	if (number == 0)
+	{
+		_putchar(48);
+		return (1);
+	}
+
 	if (number < 0)
 		number = -number;
 
-	while (number >= 0)
+	while (number > 0)
 	{
 		*ptr-- = buffer[number % base];
 		number = number / base;
-		if (number == 0)
-			break;
 	}
+
 	if (save < 0)
 		*ptr-- = '-';
 	if (band == 16)
 		*ptr-- = 'x', *ptr-- = '0';
 	ptr++;
-	if (ptr == NULL)
-		return (0);
+
 	return (write(1, ptr, _strlen(ptr)));
 }
