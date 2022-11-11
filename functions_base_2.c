@@ -12,7 +12,7 @@ int digit_case_S(va_list ptr)
 
 	if (save == NULL)
 	{
-		if ((0 < *(save + pos) && 32 > *(save + pos)) || *(save + pos) >= 127)
+		if (((0 < *(save + pos) && 32 > *(save + pos))) || *(save + pos) >= 127)
 		{
 			_putchar('\\');
 			_putchar('x');
