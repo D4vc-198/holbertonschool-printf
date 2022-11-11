@@ -1,42 +1,43 @@
 #include "main.h"
 /**
- * _printf - print string
- * @format: variable that points to a list of arguments
- * @...: rest of arguments
+ * convert_base - convert base and add argument in the buffer
+ * @base: number of base to convert
+ * @number: Number to convert
+ * @band: Flag with order to follow
  *
- * Return: the length of the printed string
+ * Return: lenght of string added to buffer
  */
 
-int _printf(const char *format, ...)
+int convert_base(int base, int number, int band)
 {
-	va_list ptr;
-	int pos, count = 0;
+	char buffer[17];
+	char buffersito[20];
+	char *ptr = &buffersito[20];
+	long int save = number;
 
-	va_start(ptr, format);
+	if (band == 0)
+		_strcpy(buffer, "0123456789ABCDEF");
+	else
+		_strcpy(buffer, "0123456789abcdef");
+	*ptr = '\0';
+	ptr--;
 
-	if (format == NULL)
-		return (-1);
-	for (pos = 0; *(format + pos) != '\0'; pos++)
+	if (number < 0)
 	{
-		if (*(format + pos) == '%' && *(format + pos + 1) == '%')
-		{
-			count += write(1, format + pos, 1);
-			pos++;
-			continue;
-		}
-		
-		if (*(format + pos) == '%')
-		{
-			if (match_case(format + pos + 1) != NULL)
-			{
-				count += match_case(format + pos + 1)(ptr);
-				pos++;
-				continue;
-			}
-		}
-		count += write(1, format + pos, 1);
+		number = -number;
 	}
 
-	va_end(ptr);
-	return (count);
+	while (number >= 0)
+	{
+		*ptr-- = buffer[number % base];
+		number = number / base;
+		if (number == 0)
+			break;
+	}
+	if (save < 0)
+		*ptr-- = 'x', *ptr-- = '0';
+	ptr++;
+	if (ptr == NULL)
+		return (0);
+	return (write(1, ptr, _strlen(ptr)));
 }
