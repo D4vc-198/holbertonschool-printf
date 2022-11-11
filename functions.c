@@ -8,7 +8,7 @@
  * Return: lenght of string
  */
 
-int convert_base(int base, int number, int band)
+int convert_base(int base, int number, int band, char **add)
 {
 	char buffer[17];
 	char *ptr;
@@ -25,7 +25,8 @@ int convert_base(int base, int number, int band)
 
 	if (number == 0)
 	{
-		_putchar(48);
+		**add = 48;
+		(**add)++;
 		return (1);
 	}
 	/*Convert*/
@@ -45,7 +46,8 @@ int convert_base(int base, int number, int band)
 
 	if (_strlen(ptr) < 2 && band == 2)
 	{
-		_putchar('0');
+		**add = 0;
+		(*add)++;
 		len_end++;
 	}
 	len_end += _strlen(ptr);
@@ -58,14 +60,15 @@ int convert_base(int base, int number, int band)
  *
  * Return: none - void function
  */
-int print_number(long int n)
+int print_number(long int n, char **add)
 {
 	unsigned int r;
 	int _length = 0;
 
 	if (n < 0)
 	{
-		_putchar(45);
+		**add = 45;
+		(*add)++;
 		n *= -1;
 		_length++;
 	}
@@ -73,9 +76,9 @@ int print_number(long int n)
 
 	if (r / 10)
 	{
-		_length += print_number(r / 10);
+		_length += print_number(r / 10, add);
 	}
-	_putchar(r % 10 + '0');
-	_length++;
-	return (_length++);
+	**add = r % 10 + '0';
+	(*add)++;
+	return (0);
 }
