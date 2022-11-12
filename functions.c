@@ -40,7 +40,7 @@ int convert_base(int base, int number, int band, char **add)
 	ptr++;
 
 	if (_strlen(ptr) < 2 && band == 2)
-		**add = 0, (*add)++, len_end++; /*_putchar('0');*/
+		**add = '0', (*add)++, len_end++; /*_putchar('0');*/
 	len_end += _strlen(ptr);
 	while (len_end > 0)
 	{
@@ -83,6 +83,7 @@ int print_number(long int n, char **add)
  * rot13 - Converts string to rot13
  * @list: string to convert
  * @add: A pointer pointing to a memory address within the buffer
+ *
  * Return: converted string
  */
 int rot13(va_list list, char **add)
