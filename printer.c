@@ -2,7 +2,7 @@
 
 /**
  * _putchar - write the character
- * @c: character to print
+ * c: character to print
  * @buffer: content of the buffer
  * @size: size of the buffer
  * Return: 1 always (success)
