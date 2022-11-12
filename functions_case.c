@@ -51,12 +51,14 @@ int digit_case_u(va_list ptr, char **add)
  * digit_case_address - Add the argument hexadecimal to the buffer
  * @ptr: A variable that points to a list of arguments
  * @add: A pointer pointing to a memory address within the buffer
+ *
  * Return: length of string added to buffer
  */
 int digit_case_address(va_list ptr, char **add)
 {
+
 	long int save = va_arg(ptr, unsigned long int);
-	char *isNill = "(nil)", *f_all = "0xffffffff";
+	char *isNill = "(nil)", *f_all = "0xffffffffffffffff";
 
 	if (save == 0)
 	{
