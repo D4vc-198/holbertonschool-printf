@@ -55,9 +55,9 @@ int digit_case_u(va_list ptr, char **add)
  */
 int digit_case_address(va_list ptr, char **add)
 {
-	long int save = va_arg(ptr, long int);
-	char *isNill = "(nil)";
-	
+	long int save = va_arg(ptr, unsigned long int);
+	char *isNill = "(nil)", *f_all = "0xffffffff";
+
 	if (save == 0)
 	{
 		while (*isNill != '\0')
@@ -67,6 +67,18 @@ int digit_case_address(va_list ptr, char **add)
 			isNill++;
 		}
 		return (0);
+
 	}
+	if (save == -1)
+	{
+		while (*f_all != '\0')
+		{
+			**add = *f_all;
+			(*add)++;
+			f_all++;
+		}
+		return (0);
+	}
+
 	return (convert_base(16, save, 16, add));
 }
