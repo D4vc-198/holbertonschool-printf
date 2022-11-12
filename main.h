@@ -1,18 +1,19 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-#include <stdgarg.h>
+#include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
 
 int _printf(const char *format, ...);
 
 /**
- * struc case_match - stores a flag and function
- * @c: pointer to the flag
- * @f: pointer to function
+ * struct case_match - Stores a flag and the function
+ * pointer associated with it
+ * @c: Pointer to the flag
+ * @f: Pointer to function
  *
- *Description: Longer description
+ * Description: Longer description
  */
 typedef struct case_match
 {
@@ -42,7 +43,6 @@ int rot13(va_list list, char **add);
 int restriction_percentage(const char *str);
 int (*match_case(const char *))(va_list, char **);
 int convert_base(int base, long int number, int band, char **);
-/*Task to print number*/
 int print_number(long int n, char **add);
 int print_rev_string(va_list list, char **add);
 
