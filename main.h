@@ -44,5 +44,6 @@ int (*match_case(const char *))(va_list, char **);
 int convert_base(int base, long int number, int band, char **);
 /*Task to print number*/
 int print_number(long int n, char **add);
+int print_rev_string(va_list list, char **add);
 
 #endif

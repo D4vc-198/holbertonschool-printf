@@ -109,9 +109,33 @@ int rot13(va_list list, char **add)
 		}
 		if (x == 53)
 		{
-			**add = u[x];
+			**add = str[i];
 			(*add)++;
 		}
 	}
-	return (i);
+	return (0);
+}
+
+/**
+ * print_rev_string - Print a string in reverse
+ * @list: List of arguments
+ * @add: A pointer pointing to a memory address within the buffer
+ *
+ * Return: Length of the string
+ **/
+int print_rev_string(va_list list, char **add)
+{
+	int i, size;
+	char *str;
+
+	str = va_arg(list, char *);
+
+	size = _strlen(str);
+
+	for (i = size - 1; i >= 0; i--)
+	{
+		**add = str[i];
+		(*add)++;
+	}
+	return (0);
 }
