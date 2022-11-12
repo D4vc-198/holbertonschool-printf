@@ -3,8 +3,8 @@
 /**
  * _putchar - write the character
  * @c: character to print
- * @buffer: The content of the buffer
- * @size: the size of the buffer
+ * @buffer: content of the buffer
+ * @size: size of the buffer
  * Return: 1 always (success)
  */
 
